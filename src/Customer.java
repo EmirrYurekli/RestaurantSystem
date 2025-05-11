@@ -91,7 +91,47 @@ public class Customer {
 	
 	}
 	
-	
+	public static void updateCustomer(int userId, Scanner scanner) {
+	    try (Connection conn = DatabaseConnection.getConnection()) {
+	        if (conn != null) {
+	            System.out.println("=== Bilgi Güncelleme ===");
+
+	            System.out.print("Yeni Ad: ");
+	            String newName = scanner.nextLine();
+
+	            System.out.print("Yeni Soyad: ");
+	            String newSurname = scanner.nextLine();
+
+	            System.out.print("Yeni Telefon: ");
+	            String newPhone = scanner.nextLine();
+
+	            System.out.print("Yeni Şifre: ");
+	            String newPassword = scanner.nextLine();
+
+	            System.out.print("Yeni Adres: ");
+	            String newAddress = scanner.nextLine();
+
+	            String sql = "UPDATE Users SET name = ?, surname = ?, phone = ?, password = ?, address = ? WHERE id = ?";
+	            PreparedStatement stmt = conn.prepareStatement(sql);
+	            stmt.setString(1, newName);
+	            stmt.setString(2, newSurname);
+	            stmt.setString(3, newPhone);
+	            stmt.setString(4, newPassword);
+	            stmt.setString(5, newAddress);
+	            stmt.setInt(6, userId);
+
+	            int updatedRows = stmt.executeUpdate();
+	            if (updatedRows > 0) {
+	                System.out.println("Bilgiler başarıyla güncellendi!");
+	            } else {
+	                System.out.println("Güncelleme başarısız!");
+	            }
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Veritabanı Hatası: " + e.getMessage());
+	    }
+	}
+
 	
 	
 	

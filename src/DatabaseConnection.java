@@ -6,8 +6,8 @@ public class DatabaseConnection {
 
 	private static final String URL = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=Mimari Proje;encrypt=false;trustServerCertificate=true;";
 
-	private static final String USER = "sa"; 
-    private static final String PASSWORD = "1234"; 
+	private static final String USER = ""; 
+    private static final String PASSWORD = ""; 
     
     public static Connection getConnection() {
         try {
@@ -18,15 +18,5 @@ public class DatabaseConnection {
             return null;
         }
     }
-
-
-
-
-
-
-
-
-
-
 
 }

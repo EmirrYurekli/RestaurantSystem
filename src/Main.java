@@ -12,7 +12,7 @@ public class Main {
 		System.out.println("Restaurant Yönetim Sistemin Hoş Geldiniz...");
 		System.out.println("Nasıl Giriş Yapmak İstersiniz "
 				+"\n - Müşteri    için   =>  1"
-				+"\n - Garson     için   =>  2"
+				+"\n - Kurye      için   =>  2"
 				+"\n - Şef        için   =>  3"
 				+"\n - Yönetici   için   =>  4");
 		
@@ -27,8 +27,8 @@ public class Main {
 			selectedrole = "customer";
 			break;
 		}case 2: {
-			System.out.println("Messenger Girildi");
-			selectedrole = "messenger";
+			System.out.println("courirer Girildi");
+			selectedrole = "courirer";
 			break;
 		}case 3: {
 			System.out.println("Chef Girildi");
@@ -54,7 +54,8 @@ public class Main {
 				int UserId = Customer.loginUser(scanner, selectedrole);
 				System.out.println("========== Müşteri Ekranına Hoşgeldiniz =========="
 								+  "\n - Sipariş Vermek             için   =>  1 "
-								+  "\n - Sipariş Durumunu Görmek    için   =>  2");
+								+  "\n - Sipariş Durumunu Görmek    için   =>  2 "
+								+  "\n - Bilgilerini Güncellemek    için   =>  3 ");
 				
 				int cos2 = scanner.nextInt();
 				scanner.nextLine();
@@ -63,8 +64,13 @@ public class Main {
 				}
 				else if(cos2 == 2) {
 					OrderManagement.viewcustomerorders(UserId);
+				}else if (cos2 ==3) {
+					Customer.updateCustomer(UserId, scanner);
+				}else {
+					System.out.println("Geçerli Değer Giriniz...");
 				}
 			}
+			
 			else if (cusChoice == 2) {	//kayıt
 				Customer.registercustomer(scanner);
 				Customer.loginUser(scanner, selectedrole);
@@ -73,7 +79,7 @@ public class Main {
 				System.out.println("Geçersiz Değer Girdiniz...");
 			}
 		}
-		else if(selectedrole.equals("messenger")) {
+		else if(selectedrole.equals("courirer")) {
 			Customer.loginUser(scanner, selectedrole);
 			System.out.println("========== Kurye Ekranına Hoşgeldiniz ==========");
 			OrderManagement.viewYoldaOrders();
@@ -101,14 +107,18 @@ public class Main {
 			System.out.println("========== Admin Paneline Hoşgeldiniz =========="
 					+  "\n - Tüm Siparişleri Görmek						için   =>  1 "
 					+  "\n - Menüyü Güncellemek							için   =>  2 "
-					+  "\n - Kullancıları Güncellemek					için   =>  3 ");
+					+  "\n - Kullancıları Güncellemek						için   =>  3 ");
 			int adm2 = scanner.nextInt();
 			scanner.nextLine();
 			if(adm2 == 1) {
 				OrderManagement.viewadmin();
 			}
 			else if (adm2 == 2) {
-				
+				admin.adminmenu();
+			}else if (adm2 == 3) {
+				Users.adminUser();
+			}else {
+				System.out.println("Geçerli Değer Giriniz...");
 			}
 			
 		}

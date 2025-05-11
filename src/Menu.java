@@ -107,26 +107,7 @@ public class Menu {
 		}
 	}
 	
-	public static void updatemenu () {
-		showmenu();
-		
-		
-		
-		
-		
-		
-		try(Connection conn = DatabaseConnection.getConnection()) {
-			if(conn != null) {
-			
-				
-				
-			}
-			
-			
-		} catch (SQLException e) {
-			System.out.println("Veritabanı Hatası " + e.getMessage());
-		}
-	}
+	
 	
 	
 	
